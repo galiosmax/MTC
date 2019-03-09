@@ -61,11 +61,13 @@ public class UFSM {
             var pos = point.y;
 
             var states = transitions.get(point.x).get(symbols.charAt(pos));
-            for (var i : states) {
-                stack.push(new Point(i, pos + 1));
-            }
-            if (pos == symbols.length() - 1 && endingStates.contains(state)) {
-                return true;
+            if (states != null) {
+                for (var i : states) {
+                    stack.push(new Point(i, pos + 1));
+                }
+                if (pos == symbols.length() - 1 && endingStates.contains(state)) {
+                    return true;
+                }
             }
         }
         return false;
